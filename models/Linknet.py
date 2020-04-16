@@ -35,7 +35,8 @@ class Linknet:
 
         x = self.conv_bn(x, 32, 3)
 
-        output = self.full_conv(x, self.classes, 2)
+        x = self.full_conv(x, self.classes, 2)
+        output = Activation('softmax')(x)
 
         model = Model(input, output)
         model.summary()
